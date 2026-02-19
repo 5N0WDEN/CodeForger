@@ -419,13 +419,3 @@ This project is fully containerized and can be deployed to:
 * Google Cloud
 * DigitalOcean
 * Any Docker-supported environment
-
----
-
-# Author
-
-Utkarsh Mhatre
-
-Final Year B.E Computer Engineering Project
-
-Decentralized and Collaborative AI Development Platform
