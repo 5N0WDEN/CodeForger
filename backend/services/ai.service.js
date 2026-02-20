@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai"
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_KEY);
 const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
+    model: "gemini-2.0-flash",
     generationConfig: {
         responseMimeType: "application/json",
         temperature: 0.4,
@@ -103,7 +103,20 @@ const model = genAI.getGenerativeModel({
 
 export const generateResult = async (prompt) => {
 
-    const result = await model.generateContent(prompt);
+     try {
 
-    return result.response.text()
+        const result = await model.generateContent(prompt);
+
+        return result.response.text();
+
+    } catch (err) {
+
+        console.error("Gemini error:", err);
+
+        return JSON.stringify({
+            text: "AI error occurred",
+            fileTree: {}
+        });
+
+    }
 }

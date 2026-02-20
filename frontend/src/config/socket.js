@@ -14,7 +14,7 @@ export const initializeSocket = (projectId) => {
             projectId
         }
     });
-
+    console.log("CONNECTION ESTABLISTED 200");
     return socketInstance;
 
 }
@@ -24,5 +24,7 @@ export const receiveMessage = (eventName, cb) => {
 }
 
 export const sendMessage = (eventName, data) => {
+    console.log(`${eventName}, ${data}`);
     socketInstance.emit(eventName, data);
+    console.log("MESSAGE SENT 200");
 }
