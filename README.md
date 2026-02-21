@@ -1,421 +1,301 @@
-# CodeForger – Collaborative MERN Development Platform (Dockerized)
+# CodeForger – Collaborative AI-Powered MERN Development Platform (Dockerized)
 
-CodeForger is a full-stack collaborative development platform built using the MERN stack, Docker, Redis, MongoDB, and Google Gemini AI. It allows users to register, create projects, collaborate with other users, and generate code using AI. The entire system runs inside Docker containers for consistency, portability, and easy deployment.
+CodeForger is a full-stack collaborative development platform that allows multiple users to build software projects together with the help of AI. It combines real-time collaboration, AI-driven code generation, and containerized execution to provide a complete development environment inside the browser.
 
----
-
-# Architecture Overview
-
-The application consists of four main services running in Docker containers:
-
-* Frontend (React + Vite) – User interface
-* Backend (Node.js + Express) – API, authentication, business logic
-* MongoDB – Primary database
-* Redis – Real-time messaging and caching
-
-External integrations:
-
-* Google Gemini AI – AI code generation
-* WebContainer API – In-browser code execution environment
+Users can create projects, invite collaborators, interact with AI to generate project files, and instantly run the generated applications inside isolated Docker containers.
 
 ---
 
-# Docker Architecture
+## 🚀 Features
 
-```
-Browser
-   │
-   ▼
-Frontend Container (React, Vite) :5173
-   │
-   ▼
-Backend Container (Node.js, Express) :3000
-   │
-   ├── MongoDB Container :27017
-   └── Redis Container   :6379
-```
+### 🔐 Authentication System
+- Secure user registration and login
+- Persistent authentication using tokens/sessions
+- User-specific project access and management
 
-Docker provides:
+### 📁 Collaborative Project Management
+- Create and manage multiple development projects
+- Invite and add collaborators to projects
+- View collaborator avatars and project team members
+- Shared access to the same project workspace
 
-* Isolated environments
-* Automatic networking between services
-* Consistent runtime across systems
-* Easy deployment
+### 🤖 AI-Powered Code Generation
+- Integrated AI assistant (Google Gemini AI)
+- Users can prompt AI to generate complete project structures
+- AI generates files such as:
+  - App.jsx
+  - Navbar.jsx
+  - Layout.jsx
+  - and other components based on prompts
+- Multiple collaborators can interact with AI in the same project
+- AI understands context and updates project files accordingly
 
----
+### 💬 Real-Time Collaborative AI Interaction
+- All collaborators share a unified AI chat interface
+- Collaborators can instruct AI to modify or create files
+- AI responds with generated code instantly
+- Enables team-based AI-driven development
 
-# Prerequisites
+### 🐳 Containerized Code Execution
+- Each project runs inside an isolated Docker container
+- Generated code can be executed safely
+- Ensures environment consistency across all users
+- Eliminates "works on my machine" issues
 
-Install the following before running the project:
+### 👥 Collaborator Management
+- Add collaborators to projects via modal interface
+- Select users and grant them access instantly
+- Collaborators can view, edit, and generate code using AI
+- Shared development environment
 
-* Docker Desktop
-  https://www.docker.com/products/docker-desktop
+### 📦 Generated Files Explorer
+- View AI-generated project files
+- Navigate between files easily
+- Real-time file updates
 
-* Node.js (optional for local development)
-  https://nodejs.org
-
-* Google Gemini API Key
-  https://aistudio.google.com/app/apikey
-
----
-
-# Environment Variables Setup
-
-Create a `.env` file in the root directory:
-
-```
-soen-main/.env
-```
-
-Add:
-
-```
-JWT_SECRET=your_jwt_secret_key
-GOOGLE_AI_KEY=your_google_gemini_api_key
-```
-
-Create another `.env` file inside frontend:
-
-```
-frontend/.env
-```
-
-Add:
-
-```
-VITE_API_URL=http://localhost:3000
-```
+### 🎨 Modern UI
+- Dark gradient modern interface
+- Responsive design
+- Clean dashboard and project view
+- Professional developer experience
 
 ---
 
-# Starting the Project Using Docker
+## 📸 Screenshots
 
-Step 1: Open terminal and navigate to project root
+### 🔐 Authentication
+<img width="894" height="907" alt="image" src="https://github.com/user-attachments/assets/232e1337-0ae1-4d15-b9b1-e6bcd27c1672" />
 
-```
-cd soen-main
-```
-
-Step 2: Build and start containers
-
-```
-docker compose up -d --build
-```
-
-This will:
-
-* Build frontend image
-* Build backend image
-* Pull MongoDB image
-* Pull Redis image
-* Start all containers
-
-Step 3: Verify containers
-
-```
-docker ps
-```
-
-You should see:
-
-* frontend
-* backend
-* mongodb
-* redis
+Shows secure login and account creation.
 
 ---
 
-# Access the Application
+### 📊 Project Dashboard
+<img width="1600" height="897" alt="image" src="https://github.com/user-attachments/assets/4a368887-52a4-4c17-bb31-f16390f25435" />
 
-Frontend:
+Displays user projects and allows creating new collaborative projects.
+
+---
+
+### ➕ Create Project
+<img width="1760" height="985" alt="image" src="https://github.com/user-attachments/assets/3eeef7c2-ff19-430f-a0ae-ad14dee44891" />
+
+Users can create new projects and initialize collaboration.
+
+---
+
+### 👥 Add Collaborators
+<img width="1592" height="1007" alt="image" src="https://github.com/user-attachments/assets/536840cc-3b78-44dc-85dc-342fd20a90c8" />
+
+Users can invite collaborators to work together.
+
+---
+
+### 🤖 AI Code Generation
+<img width="1600" height="797" alt="image" src="https://github.com/user-attachments/assets/e283acb7-3acf-41ea-93ca-851e7a369504" />
+
+Collaborators interact with AI to generate project files.
+
+---
+
+### 💻 Collaborative Workspace
+<img width="1600" height="899" alt="image" src="https://github.com/user-attachments/assets/2944eed3-5f91-4e6d-8a47-9338dd9fa8c9" />
+
+Full development environment with AI chat, file explorer, and live preview.
+
+---
+
+## 🏗️ Architecture Overview
 
 ```
-http://localhost:5173
-```
-
-Backend API:
-
-```
-http://localhost:3000
-```
-
-MongoDB:
-
-```
-mongodb://localhost:27017
-```
-
-Redis:
-
-```
-localhost:6379
+CodeForger
+│
+├── Frontend (React + Tailwind)
+│ ├── Authentication UI
+│ ├── Project Dashboard
+│ ├── AI Chat Interface
+│ ├── File Explorer
+│ └── Collaboration UI
+│
+├── Backend (Node.js + Express)
+│ ├── Authentication APIs
+│ ├── Project APIs
+│ ├── Collaboration APIs
+│ ├── AI Integration APIs
+│ └── Container Management APIs
+│
+├── Database (MongoDB)
+│ ├── Users
+│ ├── Projects
+│ ├── Collaborators
+│ └── Files Metadata
+│
+├── Cache & Queue (Redis)
+│ └── Fast AI response handling
+│
+├── AI Integration
+│ └── Google Gemini AI for code generation
+│
+└── Container System (Docker)
+└── Isolated environment for running generated code
 ```
 
 ---
 
-# Stopping the Project
+## ⚙️ Tech Stack
 
-To stop all containers:
+### Frontend
+- React.js
+- Tailwind CSS
+- Axios
+- Context API / State Management
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+
+### Infrastructure
+- Docker
+- Redis
+- Containerized execution
+
+### AI Integration
+- Google Gemini AI API
+
+---
+
+## 📸 Application Flow
+
+1. User registers or logs in
+2. User creates a new project
+3. User invites collaborators
+4. All collaborators join the same workspace
+5. Users interact with AI via prompt
+6. AI generates project files
+7. Files appear in the file explorer
+8. Docker container runs the generated project
+9. Collaborators continue improving the project with AI
+
+---
+
+## 📂 Project Structure
 
 ```
-docker compose down
+CodeForger/
+│
+├── client/ # React frontend
+│ ├── components/
+│ ├── pages/
+│ ├── context/
+│ └── services/
+│
+├── server/ # Node.js backend
+│ ├── controllers/
+│ ├── routes/
+│ ├── models/
+│ ├── services/
+│ └── middleware/
+│
+├── docker/ # Container configs
+│
+├── redis/ # Redis configs
+│
+├── docker-compose.yml
+│
+└── README.md
 ```
 
 ---
 
-# Restarting the Project
+## 🐳 Docker Support
 
-After system restart:
+CodeForger uses Docker to:
+
+- Run generated applications
+- Provide isolated execution environments
+- Ensure consistent runtime
+- Enable safe execution of AI-generated code
+
+---
+
+## 🔄 Collaboration Workflow
 
 ```
-docker compose up -d
+User creates project
+↓
+User invites collaborators
+↓
+Collaborators join project
+↓
+Users prompt AI
+↓
+AI generates files
+↓
+Files saved to project
+↓
+Docker container runs project
+↓
+Team continues collaboration
 ```
 
 ---
 
-# Rebuilding Containers After Code Changes
+## 🔑 Core Capabilities
 
-```
-docker compose up -d --build
-```
-
----
-
-# Project Features
-
-User Features:
-
-* User registration and login
-* JWT authentication
-* Secure authorization
-* Create new projects
-* Add collaborators
-* Real-time project collaboration
-
-AI Features:
-
-* Generate code using Google Gemini AI
-* Structured JSON-based code generation
-* AI assisted development workflow
-
-Real-Time Features:
-
-* Socket.IO integration
-* Redis-powered messaging
-* Live updates between collaborators
-
-Execution Environment:
-
-* WebContainer integration
-* Run Node.js projects inside browser
-* Install dependencies dynamically
+- Multi-user collaborative development
+- AI-driven full project generation
+- Real-time AI-assisted coding
+- Containerized execution
+- Modern full-stack architecture
 
 ---
 
-# Backend Responsibilities
+## 🎯 Use Cases
 
-The backend handles:
-
-* Authentication and JWT validation
-* User management
-* Project management
-* AI request handling
-* Socket.IO communication
-* Redis integration
-* MongoDB data storage
+- Team-based AI-assisted development
+- Rapid prototyping
+- Learning full-stack development
+- Collaborative hackathons
+- AI-powered coding environments
 
 ---
 
-# Frontend Responsibilities
+## 🚀 Future Improvements
 
-The frontend handles:
-
-* User interface rendering
-* Authentication flow
-* Project creation and management
-* AI interaction
-* Real-time updates
-* WebContainer integration
+- Real-time cursor collaboration
+- Live code editing
+- Terminal access inside container
+- GitHub integration
+- Version control
+- Deployment support
 
 ---
 
-# Database Structure
+## 🧠 Inspiration
 
-MongoDB stores:
+CodeForger is inspired by modern AI-powered development environments and collaborative tools like:
 
-* Users
-* Projects
-* Collaborators
-* Project metadata
-
-Redis stores:
-
-* Real-time communication data
-* Session caching
+- GitHub Codespaces
+- Replit
+- Cursor AI
+- VS Code Live Share
 
 ---
 
-# Docker Containers Description
+## 👨‍💻 Author
 
-Frontend Container
-
-* Runs React + Vite
-* Serves UI
-* Communicates with backend
-
-Backend Container
-
-* Runs Node.js server
-* Handles API requests
-* Connects to MongoDB and Redis
-
-MongoDB Container
-
-* Stores application data
-* Persistent storage
-
-Redis Container
-
-* Real-time messaging
-* Cache layer
+Utkarsh Mhatre
 
 ---
 
-# Useful Docker Commands
+## 📜 License
 
-Start containers:
-
-```
-docker compose up -d
-```
-
-Stop containers:
-
-```
-docker compose down
-```
-
-Rebuild containers:
-
-```
-docker compose up -d --build
-```
-
-View running containers:
-
-```
-docker ps
-```
-
-View logs:
-
-```
-docker logs backend
-docker logs frontend
-```
-
-Access container terminal:
-
-```
-docker exec -it backend bash
-```
-
-Remove unused images:
-
-```
-docker system prune -a
-```
+This project is licensed under the MIT License.
 
 ---
 
-# How Authentication Works
+## ⭐ Summary
 
-1. User logs in
-2. Backend generates JWT token
-3. Token stored in browser localStorage
-4. Token sent with every API request
-5. Backend validates token
-6. Access granted or denied
-
----
-
-# How AI Integration Works
-
-1. User sends prompt
-2. Backend sends request to Gemini AI
-3. Gemini generates structured response
-4. Backend returns response to frontend
-5. Frontend renders generated code
-
----
-
-# How Real-Time Collaboration Works
-
-1. Frontend connects to Socket.IO server
-2. Redis manages messaging
-3. Backend broadcasts updates
-4. All connected clients receive updates instantly
-
----
-
-# Technologies Used
-
-Frontend:
-
-* React
-* Vite
-* Tailwind CSS
-* Socket.IO Client
-
-Backend:
-
-* Node.js
-* Express.js
-* MongoDB
-* Redis
-* Socket.IO
-* JWT Authentication
-
-AI:
-
-* Google Gemini AI
-
-Infrastructure:
-
-* Docker
-* Docker Compose
-
----
-
-# Troubleshooting
-
-If containers are not running:
-
-```
-docker compose up -d --build
-```
-
-If port is already in use:
-
-```
-docker compose down
-```
-
-If environment variables not working:
-
-```
-docker compose down
-docker compose up -d --build
-```
-
----
-
-# Production Deployment Ready
-
-This project is fully containerized and can be deployed to:
-
-* AWS
-* Azure
-* Google Cloud
-* DigitalOcean
-* Any Docker-supported environment
+CodeForger is a collaborative AI-powered development platform where users and their team can interact with AI to generate full applications, manage projects together, and run them inside isolated Docker containers — all from a single modern web interface.
